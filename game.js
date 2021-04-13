@@ -16,7 +16,7 @@ let finalMsg = document.getElementById('final-msg');
 /**
  * GAME VALUES and Elements
  */
-let attackValue = 1;
+let attackValue = 0;
 let defenseValue = 0;
 let bossAttack = 6;
 
@@ -87,16 +87,16 @@ defenseOpt.forEach(radioBtn => {
 //button listener that sets game in motion and forces player to choose atk and def options.
 startAttack.addEventListener('click', (e) => {
     e.preventDefault();
-    // while (!attackValue || !defenseValue) {
-    //     if (!attackValue) {
-    //         alert('please select an attack type')
-    //     } else if (!defenseValue) {
-    //         alert('please select a defense type')
-    //     }
-    // }
-    attackStory.appendChild(elementOl);
-    bossHealth = getRandomIntInclusive(bossHealthMin, bossHealthMax);
-    playerHealth = getRandomIntInclusive(playerHealthMin, playerHealthMax);
-    attackStoryFun(playerHealth, bossHealth);
 
+    if (!attackValue) {
+        alert('please select an attack type');
+    } else {
+        alert('please select a defense type');
+    }
+    if (attackValue && defenseValue) {
+        attackStory.appendChild(elementOl);
+        bossHealth = getRandomIntInclusive(bossHealthMin, bossHealthMax);
+        playerHealth = getRandomIntInclusive(playerHealthMin, playerHealthMax);
+        attackStoryFun(playerHealth, bossHealth);
+    }
 });
