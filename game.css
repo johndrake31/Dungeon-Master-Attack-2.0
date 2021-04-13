@@ -1,0 +1,22 @@
+button {
+    border-radius: 12px;
+    background-color: rgba(255, 99, 71, 0.415);
+    border: none;
+    padding: 6px 12px;
+}
+
+.my-div {
+    padding: 12px;
+    border: 2px solid black;
+    margin: 12px;
+    max-width: 350px;
+    color: white;
+}
+
+#attack-sel {
+    background-image: linear-gradient(rgb(18, 152, 173), blue);
+}
+
+#defense-sel {
+    background-image: linear-gradient(rgba(127, 66, 23, 0.675), rgba(255, 183, 0, 0.771));
+}
