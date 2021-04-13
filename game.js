@@ -28,35 +28,45 @@ let playerHealth = 0;
 const playerHealthMin = 100;
 const playerHealthMax = 125;
 
+//create element for game storyline.
 const elementOl = document.createElement("ol");
 elementOl.id = 'storyOl';
 
-//Code snippet from Mozzilla.org
+//Code snippet from Mozzilla.org random min-max number generator
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+
 /**
  * GAME INTERACTIONS & LOGIC
  */
 function attackStoryFun(player, boss) {
-
     const myOl = document.getElementById('storyOl');
 
     while (player > 0 && boss > 0) {
+        //set boss attack to be random value between 1-6
         bossAttack = getRandomIntInclusive(1, 6)
+
+        //logic to keep damage value from being a negitive number and  offsets the boss attack by players defense.
         bossAttack > defenseValue ? bossAttack = bossAttack - defenseValue : bossAttack = 0;
+
         let elementLi = document.createElement('li');
         player -= bossAttack;
+
+        //player attacks boss random number between 1 and max
         boss -= getRandomIntInclusive(1, attackValue);
         elementLi.innerHTML = `Player health = <span style="color:blue">${player < 0? player = 0 : player= player }!</span> Boss health = <span style="color:red">${boss < 0? boss = 0 : boss= boss }!</span> `
         myOl.appendChild(elementLi);
-        boss <= 0 ? finalMsg.innerHTML = `You Defeated the Evil Dungeon Master 😃 <br> <img id="you-win" src="./defeated-master.png" alt="Dungeon Master">` : finalMsg.innerHTML = `You were killed by the Evil Dungeon Master 😢 <br> <img id="you-lose" src="./deafeated-knight.jpeg">`;
+        boss <= 0 ?
+            finalMsg.innerHTML = `You Defeated the Evil Dungeon Master 😃 <br> <img id="you-win" src="./defeated-master.png" alt="Dungeon Master">` :
+            finalMsg.innerHTML = `You were killed by the Evil Dungeon Master 😢 <br> <img id="you-lose" src="./deafeated-knight.jpeg">`;
     }
 }
 
+//radio button listener that sets player attack max range.
 attackOpt.forEach(radioBtn => {
     radioBtn.addEventListener('change', (e) => {
         let eTar = e.target;
@@ -65,6 +75,7 @@ attackOpt.forEach(radioBtn => {
     })
 });
 
+//radio button listener that sets player defense.
 defenseOpt.forEach(radioBtn => {
     radioBtn.addEventListener('change', (e) => {
         let eTar = e.target;
@@ -73,19 +84,19 @@ defenseOpt.forEach(radioBtn => {
     })
 });
 
+//button listener that sets game in motion and forces player to choose atk and def options.
 startAttack.addEventListener('click', (e) => {
     e.preventDefault();
-    if (!attackValue || !defenseValue) {
-        if (!attackValue) {
-            alert('please select an attack type')
-        } else if (!defenseValue) {
-            alert('please select an defense type')
-        }
-    }
+    // while (!attackValue || !defenseValue) {
+    //     if (!attackValue) {
+    //         alert('please select an attack type')
+    //     } else if (!defenseValue) {
+    //         alert('please select a defense type')
+    //     }
+    // }
     attackStory.appendChild(elementOl);
     bossHealth = getRandomIntInclusive(bossHealthMin, bossHealthMax);
     playerHealth = getRandomIntInclusive(playerHealthMin, playerHealthMax);
-    attackStory.appendChild(elementOl);
     attackStoryFun(playerHealth, bossHealth);
 
 });
