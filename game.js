@@ -53,7 +53,7 @@ function attackStoryFun(player, boss) {
         boss -= getRandomIntInclusive(1, attackValue);
         elementLi.innerHTML = `Player health = <span style="color:blue">${player < 0? player = 0 : player= player }!</span> Boss health = <span style="color:red">${boss < 0? boss = 0 : boss= boss }!</span> `
         myOl.appendChild(elementLi);
-        boss <= 0 ? finalMsg.innerHTML = "You Defeated the Evil Dungeon Master 😃" : finalMsg.innerHTML = "You were killed by the Evil Dungeon Master 😢"
+        boss <= 0 ? finalMsg.innerHTML = `You Defeated the Evil Dungeon Master 😃 <br> <img id="you-win" src="./defeated-master.png" alt="Dungeon Master">` : finalMsg.innerHTML = `You were killed by the Evil Dungeon Master 😢 <br> <img id="you-lose" src="./deafeated-knight.jpeg">`;
     }
 }
 

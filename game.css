@@ -1,3 +1,7 @@
+body {
+    padding: 12px;
+}
+
 button {
     border-radius: 12px;
     background-color: rgba(255, 99, 71, 0.415);
@@ -12,6 +16,15 @@ button {
     max-width: 350px;
     color: white;
 }
+
+#picture-main {
+    width: 638px;
+    height: 328px;
+}
+
+#you-lose {}
+
+#you-win {}
 
 #attack-sel {
     background-image: linear-gradient(rgb(18, 152, 173), blue);
