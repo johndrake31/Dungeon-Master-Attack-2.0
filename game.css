@@ -20,8 +20,23 @@ button {
 #picture-main {
     width: 638px;
     height: 328px;
+
 }
 
+#title-pic {
+    position: relative;
+    animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 200px;
+    }
+}
 
 #attack-sel {
     background-image: linear-gradient(rgba(18, 152, 173, 0.312), rgba(0, 0, 255, 0.346)),
