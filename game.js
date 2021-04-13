@@ -31,6 +31,7 @@ const playerHealthMax = 125;
 //create element for game storyline.
 const elementOl = document.createElement("ol");
 elementOl.id = 'storyOl';
+attackStory.appendChild(elementOl);
 
 //Code snippet from Mozzilla.org random min-max number generator
 function getRandomIntInclusive(min, max) {
@@ -45,7 +46,7 @@ function getRandomIntInclusive(min, max) {
  */
 function attackStoryFun(player, boss) {
     const myOl = document.getElementById('storyOl');
-
+    myOl.innerHTML = "";
     while (player > 0 && boss > 0) {
         //set boss attack to be random value between 1-6
         bossAttack = getRandomIntInclusive(1, 6)
@@ -90,11 +91,11 @@ startAttack.addEventListener('click', (e) => {
 
     if (!attackValue) {
         alert('please select an attack type');
-    } else {
+    } else if (!defenseValue) {
         alert('please select a defense type');
     }
     if (attackValue && defenseValue) {
-        attackStory.appendChild(elementOl);
+
         bossHealth = getRandomIntInclusive(bossHealthMin, bossHealthMax);
         playerHealth = getRandomIntInclusive(playerHealthMin, playerHealthMax);
         attackStoryFun(playerHealth, bossHealth);
