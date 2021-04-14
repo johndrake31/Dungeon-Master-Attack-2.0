@@ -11,7 +11,7 @@ const defenseOpt = $('[name=def]');
 const startAttack = $('#start-attack');
 //game story msgs
 let attackStory = $('#list-attacks');
-let finalMsg = document.getElementById('final-msg');
+let finalMsg = $('#final-msg');
 
 /**
  * GAME VALUES and Elements
@@ -51,8 +51,8 @@ function getRandomIntInclusive(min, max) {
  * GAME INTERACTIONS & LOGIC
  */
 function attackStoryFun(player, boss) {
-    const myOl = document.getElementById('storyOl');
-    myOl.innerHTML = "";
+    const myOl = $('#storyOl');
+    myOl.html("");
     while (player > 0 && boss > 0) {
         //set boss attack to be random value between 1-6
         bossObj.attack = getRandomIntInclusive(1, 6)
@@ -75,12 +75,12 @@ function attackStoryFun(player, boss) {
 
         boss -= playerObj.attack;
 
-        let elementLi = document.createElement('li');
-        elementLi.innerHTML = `Player health = <span style="color:blue">${player < 0? player = 0 : player= player }!</span> <br> Boss health = <span style="color:red">${boss < 0? boss = 0 : boss= boss }!</span> `
-        myOl.appendChild(elementLi);
+        let elementLi = $('<li>');
+        elementLi.html(`Player health = <span style="color:blue">${player < 0? player = 0 : player= player }!</span> <br> Boss health = <span style="color:red">${boss < 0? boss = 0 : boss= boss }!</span> `)
+        myOl.append(elementLi);
         boss <= 0 ?
-            finalMsg.innerHTML = `You Defeated the Evil Dungeon Master 😃 <br> <img id="you-win" src="./pics/defeated-master.png" alt="Dungeon Master">` :
-            finalMsg.innerHTML = `You were killed by the Evil Dungeon Master 😢 <br> <img id="you-lose" src="./pics/deafeated-knight.jpeg">`;
+            finalMsg.html(`You Defeated the Evil Dungeon Master 😃 <br> <img id="you-win" src="./pics/defeated-master.png" alt="Dungeon Master">`) :
+            finalMsg.html(`You were killed by the Evil Dungeon Master 😢 <br> <img id="you-lose" src="./pics/deafeated-knight.jpeg">`);
     }
 }
 
@@ -88,14 +88,12 @@ function attackStoryFun(player, boss) {
 attackOpt.on('change', (e) => {
     let eTar = e.target;
     playerObj.attackMax = +eTar.value;
-    console.log(playerObj.attackMax);
 });
 
 //radio button listener that sets player defense.
 defenseOpt.on('change', (e) => {
     let eTar = e.target;
     playerObj.defense = +eTar.value;
-    console.log(playerObj.defense);
 });
 
 //button listener that sets game in motion and forces player to choose atk and def options.
