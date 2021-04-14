@@ -55,6 +55,7 @@ function attackStoryFun(player, boss) {
     while (player > 0 && boss > 0) {
         //set boss attack to be random value between 1-6
         bossObj.attack = getRandomIntInclusive(1, 6)
+        bossObj.defense = getRandomIntInclusive(0, 4)
 
         //logic to keep damage value from being a negitive number and  offsets the boss attack by players defense.
         bossObj.attack > playerObj.defense ?
