@@ -44,13 +44,14 @@ button {
 
 #attack-sel {
     background-image: linear-gradient(rgba(18, 152, 173, 0.312), rgba(0, 0, 255, 0.346)),
-        url(./attack-img.jpeg);
+        url(./pics/attack-img.jpeg);
     background-position: center;
     background-size: contain;
 
 }
 
 #defense-sel {
-    background-image: linear-gradient(rgba(127, 66, 23, 0.422), rgba(255, 183, 0, 0.333)), url(./shield-img.jpeg);
+    background-image: linear-gradient(rgba(127, 66, 23, 0.422), rgba(255, 183, 0, 0.333)),
+        url(./pics/shield-img.jpeg);
     ;
 }
